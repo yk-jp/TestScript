@@ -3,7 +3,7 @@ import unittest
 import os
 from pathlib import Path
 import glob
-from io import StringIO
+import subprocess
 # custom
 import config
 
@@ -32,10 +32,14 @@ class TestMain(unittest.TestCase):
                     config.INPUT_FILE_PATH, f"{filename}.in")
                 output_data = extract_data_from_file(
                     config.OUTPUT_FILE_PATH, f"{filename}.out")
-                function_res = os.system(
-                    f"cd {config.FUNC_FILE_PATH} && echo $'{input_data}' | {config.RUN}")
+                
+                command = f"cd {config.FUNC_FILE_PATH} && echo $'{input_data}' | {config.RUN}" 
+                
+                process = subprocess.Popen(command, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
 
-                self.assertEqual(str(function_res).strip(), str(output_data).strip())
+                stdout, stderr = process.communicate()
+                
+                self.assertEqual(str(stdout).strip(), str(output_data).strip())
 
 if __name__ == '__main__':
     unittest.main()
