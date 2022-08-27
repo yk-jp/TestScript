@@ -16,6 +16,11 @@ Run this command
 python test_main.py
 ```
 
+You can set up config.py in your terminal by executing
+```
+python config_setup.py
+``` 
+
 *Note
 
 The data which is printed at the end in the function is used for the test
