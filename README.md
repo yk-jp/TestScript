@@ -32,6 +32,6 @@ func exapmle() -> Int {
 
   print(output1)
   print(output2) // This output2 is used for the comparison
-  return output
+  return output2
 }
 ```
