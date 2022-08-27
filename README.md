@@ -15,3 +15,18 @@ Run this command
 ```
 python test_main.py
 ```
+
+*Note
+
+The data which is printed at the end in the function is used for the test
+
+``` swift
+func exapmle() -> Int {
+  output1 = 1
+  output2 = 2
+
+  print(output1)
+  print(output2) // This output2 is used for the comparison
+  return output
+}
+```
